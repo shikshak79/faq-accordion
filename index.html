@@ -1,100 +1,150 @@
-<style>
-.accordion {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  font-family: sans-serif;
-}
-.accordion-item {
-  border-bottom: 1px solid #ddd;
-}
-.accordion-button {
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  padding: 1em;
-  font-size: 1em;
-  cursor: pointer;
-  position: relative;
-}
-.accordion-button:after {
-  content: '+';
-  position: absolute;
-  right: 1em;
-  transition: transform 0.2s ease;
-}
-.accordion-button.active:after {
-  content: '–';
-}
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 1em;
-  font-size: 0.95em;
-  color: #444;
-}
-.accordion-content.open {
-  padding-bottom: 1em;
-}
-</style>
-
-<div class="accordion">
-  <div class="accordion-item">
-    <button class="accordion-button">What is your return policy?</button>
-    <div class="accordion-content">
-      <p>You can return any item within 30 days, no questions asked.</p>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-button">How long is the delivery time?</button>
-    <div class="accordion-content">
-      <p>Delivery usually takes 3–5 business days across Europe.</p>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-button">Do you offer support?</button>
-    <div class="accordion-content">
-      <p>Yes, we offer email and chat support Monday to Friday, 9–6 CET.</p>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-button">Can I track my order?</button>
-    <div class="accordion-content">
-      <p>Yes, you'll receive a tracking link via email as soon as your order ships.</p>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-button">Do you ship internationally?</button>
-    <div class="accordion-content">
-      <p>We currently ship to most EU countries, the UK, and North America.</p>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-button">How do I cancel or change my order?</button>
-    <div class="accordion-content">
-      <p>Contact our support team within 2 hours of placing your order for changes or cancellations.</p>
-    </div>
-  </div>
-</div>
-
-<script>
-const buttons = document.querySelectorAll('.accordion-button');
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    const content = button.nextElementSibling;
-    const isOpen = button.classList.contains('active');
-    document.querySelectorAll('.accordion-content').forEach(c => {
-      c.style.maxHeight = null;
-      c.classList.remove('open');
-    });
-    document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('active'));
-    if (!isOpen) {
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.classList.add('open');
-      button.classList.add('active');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Accordion</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #fff;
+      color: #111;
     }
-  });
-});
-</script>
+
+    .accordion {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-button {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1em;
+      font-size: 1.05em;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .accordion-button:after {
+      content: '+';
+      position: absolute;
+      right: 1em;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-button.active:after {
+      content: '–';
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1em;
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    .accordion-content.open {
+      padding-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-button">Who should be involved in the sprint?</button>
+      <div class="accordion-content">
+        <p>Bring the people who shape your product, sell it, or explain it. Founders, product leads, commercial leads, and anyone who’ll use the new story in real life.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">What does it cost?</button>
+      <div class="accordion-content">
+        <p>Pricing depends on your stage. Scroll up to see the three tiers (Pre-Launch, Early Growth, Expansion).</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">What do we get at the end?</button>
+      <div class="accordion-content">
+        <p>You’ll walk away with one clear story — wired into your homepage, pitch outline, and a 1-pager your team can run with. See the full list [above / in the solution section].</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">How long does it take?</button>
+      <div class="accordion-content">
+        <p>3 weeks from kickoff. We run 2 live workshops and deliver async outputs in between. It’s fast, but deep.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">Do you redesign the homepage?</button>
+      <div class="accordion-content">
+        <p>No visual design. We deliver a full wireframe with working copy — ready for your team to plug into design and ship.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">Will you write my full website?</button>
+      <div class="accordion-content">
+        <p>No. This sprint focuses on your <strong>homepage spine</strong> — the core story and how to land it fast. It sets the tone, structure, and message your other pages can follow.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">Will you interview our customers?</button>
+      <div class="accordion-content">
+        <p>No. Most teams already have the signals — we help you translate them into a sharper story. We'll take your most recent sales conversations into account. If this is not viable, we can recommend next steps.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">Will this improve our homepage conversion?</button>
+      <div class="accordion-content">
+        <p>If your story is unclear today, that's likely — most teams see better engagement and shorter pitch cycles. But this isn’t a RevOps sprint. It’s a clarity sprint.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-button">What if we’re not ready yet?</button>
+      <div class="accordion-content">
+        <p>Start with the free “Is This You?” checklist — or talk to us. We’ll help you decide if this is the right moment to sharpen your story.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.accordion-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const isOpen = button.classList.contains('active');
+        document.querySelectorAll('.accordion-content').forEach(c => {
+          c.style.maxHeight = null;
+          c.classList.remove('open');
+        });
+        document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('active'));
+        if (!isOpen) {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add('open');
+          button.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
