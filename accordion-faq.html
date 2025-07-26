@@ -1,0 +1,100 @@
+<style>
+.accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  font-family: sans-serif;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+.accordion-button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 1em;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+}
+.accordion-button:after {
+  content: '+';
+  position: absolute;
+  right: 1em;
+  transition: transform 0.2s ease;
+}
+.accordion-button.active:after {
+  content: '–';
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1em;
+  font-size: 0.95em;
+  color: #444;
+}
+.accordion-content.open {
+  padding-bottom: 1em;
+}
+</style>
+
+<div class="accordion">
+  <div class="accordion-item">
+    <button class="accordion-button">What is your return policy?</button>
+    <div class="accordion-content">
+      <p>You can return any item within 30 days, no questions asked.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">How long is the delivery time?</button>
+    <div class="accordion-content">
+      <p>Delivery usually takes 3–5 business days across Europe.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Do you offer support?</button>
+    <div class="accordion-content">
+      <p>Yes, we offer email and chat support Monday to Friday, 9–6 CET.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Can I track my order?</button>
+    <div class="accordion-content">
+      <p>Yes, you'll receive a tracking link via email as soon as your order ships.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Do you ship internationally?</button>
+    <div class="accordion-content">
+      <p>We currently ship to most EU countries, the UK, and North America.</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">How do I cancel or change my order?</button>
+    <div class="accordion-content">
+      <p>Contact our support team within 2 hours of placing your order for changes or cancellations.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('.accordion-button');
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.nextElementSibling;
+    const isOpen = button.classList.contains('active');
+    document.querySelectorAll('.accordion-content').forEach(c => {
+      c.style.maxHeight = null;
+      c.classList.remove('open');
+    });
+    document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('active'));
+    if (!isOpen) {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add('open');
+      button.classList.add('active');
+    }
+  });
+});
+</script>
